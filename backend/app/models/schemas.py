@@ -18,11 +18,16 @@ class AnswerRequest(BaseModel):
         return value
 
 
+class StartInterviewRequest(BaseModel):
+    candidate_id: str | None = None
+
+
 class StartInterviewResponse(BaseModel):
     session_id: str
     question: str
     curriculum_day: int
     curriculum_topic: str
+    candidate_id: str | None = None
 
 
 class AnswerResponse(BaseModel):

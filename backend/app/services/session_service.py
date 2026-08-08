@@ -10,10 +10,11 @@ _sessions: dict[str, dict] = {}
 _lock = RLock()
 
 
-def create_session(first_question: str, curriculum_topic: dict) -> dict:
+def create_session(first_question: str, curriculum_topic: dict, candidate_id: str | None = None) -> dict:
     session_id = str(uuid4())
     session = {
         "session_id": session_id,
+        "candidate_id": candidate_id,
         "history": [
             {
                 "question": first_question,

@@ -6,3 +6,5 @@ python-dotenv>=1.0.0
 requests>=2.31.0
 pytest>=8.2.0
 pytest-asyncio>=0.23.0
+chromadb>=0.4.24
+scikit-learn>=1.4.0

@@ -5,13 +5,20 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from .candidate_processor import CandidateKnowledgeMap, process_candidate
-from .curriculum_extractor import extract_daily_topics
+try:
+    from .candidate_processor import CandidateKnowledgeMap, process_candidate
+    from .curriculum_extractor import extract_daily_topics
+except ImportError:
+    from candidate_processor import CandidateKnowledgeMap, process_candidate
+    from curriculum_extractor import extract_daily_topics
 
 try:
     from .vector_store_chromadb import build_vector_db, query_vector_db
 except ImportError:
-    from .curriculum_vector_db import build_vector_db, query_vector_db
+    try:
+        from .curriculum_vector_db import build_vector_db, query_vector_db
+    except ImportError:
+        from curriculum_vector_db import build_vector_db, query_vector_db
 
 
 BACKEND_ROOT = Path(__file__).resolve().parent.parent
